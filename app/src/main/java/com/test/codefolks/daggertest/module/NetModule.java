@@ -7,8 +7,8 @@ import android.preference.PreferenceManager;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.test.codefolks.daggertest.network.ApiInterface;
 
-import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -77,4 +77,15 @@ public class NetModule {
                 .build();
 
     }
+
+    @Provides
+    @Singleton
+    ApiInterface provideItemService(Retrofit retrofit) {
+        return retrofit.create(ApiInterface.class);
+    }
+
+//    @Provides
+//    Repository provideRepository(ApiInterface apiInterface) {
+//        return Repository(service)
+//    }
 }

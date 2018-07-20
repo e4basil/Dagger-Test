@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements LoginCallBack {
     Retrofit retrofit;
     @Inject
     SharedPreferences sharedPreferences;
+    @Inject
+    ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements LoginCallBack {
         ((MyApp) getApplication()).getmNetComponent().inject(this);
 
 
-        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+//        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
         Call<LoginResponse> responseCall = apiInterface.getLoginResults("dataload", "dataload");
         Webservices.getInstance().getloginResult(100, responseCall, this);
     }
